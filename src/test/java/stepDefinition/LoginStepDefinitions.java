@@ -6,6 +6,8 @@ import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import pageObjects.HomePage;
 import utils.TestContextSetup;
 
 public class LoginStepDefinitions {
@@ -18,9 +20,8 @@ public class LoginStepDefinitions {
 
 	@Given("^User is on Landing Page$")
 	public void user_is_on_landing_page(){
-		WebDriverManager.chromedriver().setup();
-		testContextSetup.driver = new ChromeDriver();
-		testContextSetup.driver.get("https://www.google.com");
+		HomePage homePage = testContextSetup.getPageObjectManager().getHomePage();
+		Assert.assertEquals(homePage.getHomePageTitle(), "Google");
 	}
 
 	@When("^User enter correct username and password$")

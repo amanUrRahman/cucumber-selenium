@@ -12,11 +12,9 @@ import utils.TestContextSetup;
 public class SearchStepDefinitions {
 
     TestContextSetup testContextSetup;
-    PageObjectManager pageObjectManager;
 
     public SearchStepDefinitions(TestContextSetup testContextSetup){
         this.testContextSetup = testContextSetup;
-        this.pageObjectManager = new PageObjectManager(testContextSetup.driver);
     }
 
     @Given("User is on the Home page")
@@ -26,7 +24,7 @@ public class SearchStepDefinitions {
     }
     @When("User enters the product {string} and clicks on search")
     public void user_enters_the_product_and_clicks_on_search(String product) {
-        HomePage homePage = pageObjectManager.getHomePage();
+        HomePage homePage = testContextSetup.getPageObjectManager().getHomePage();
         homePage.enterSearch(product).clickSearch();
     }
 

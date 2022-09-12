@@ -23,4 +23,8 @@ public class HomePage extends BasePage{
         submit(driver, searchButton);
     }
 
+    public String getHomePageTitle(){
+        return getTitle(driver);
+    }
+
 }
